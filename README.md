@@ -11,3 +11,5 @@ up as a PHP-FPM proxy for a container within the same Docker stack.
 | DOCUMENT_ROOT  | The path to the root of the application                     | /var/www/app |
 | CONTAINER_NAME | The name of the container that runs the PHP-FPM application | php-fpm      |
 | CONTAINER_PORT | The port on which the PHP-FPM is exposed                    | 9000         |
+
+Docker image can be found [here](https://hub.docker.com/repository/docker/hercdottech/docker-nginx-fpm-proxy/general)
