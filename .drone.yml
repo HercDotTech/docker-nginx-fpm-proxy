@@ -12,7 +12,8 @@ steps:
         from_secret: DOCKER_PAT
       repo: hercdottech/docker-nginx-fpm-proxy
       tags:
-        - latest
+        - "v1.0.${DRONE_BUILD_NUMBER}"
+        - "latest"
     when:
       branch:
         - main
@@ -26,6 +27,7 @@ steps:
         from_secret: DOCKER_PAT
       repo: hercdottech/docker-nginx-fpm-proxy
       tags:
+        - "v1.0.${DRONE_BUILD_NUMBER}-dev"
         - "${DRONE_BRANCH}"
         - "dev-latest"
     when:
