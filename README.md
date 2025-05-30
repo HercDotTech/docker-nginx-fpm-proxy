@@ -16,7 +16,7 @@ Docker image can be found [here](https://hub.docker.com/repository/docker/hercdo
 
 ## Static files
 
-If your application has to serve static files this can be achieved following the example illustrated in the `docker-compose.yml` below:
+If your application has to serve static files, this can be achieved following the example illustrated in the `docker-compose.yml` below:
 
 ```
 services:
