@@ -2,9 +2,6 @@ kind: pipeline
 type: docker
 name: Docker - Nginx FPM Proxy
 
-platform:
-  arch: amd64
-
 steps:
   - name: Publish Main Image
     image: thegeeklab/drone-docker-buildx:23
@@ -15,28 +12,19 @@ steps:
       password:
         from_secret: DOCKER_PAT
       repo: hercdottech/docker-nginx-fpm-proxy
-      tags: latest
+      tags:
+        - "v1.0.${DRONE_BUILD_NUMBER}"
+        - "latest"
       platforms:
         - linux/amd64
         - linux/arm64
-
-#  - name: Publish Main Image
-#    image: plugins/docker
-#    settings:
-#      username:
-#        from_secret: DOCKER_USER
-#      password:
-#        from_secret: DOCKER_PAT
-#      repo: hercdottech/docker-nginx-fpm-proxy
-#      tags:
-#        - "v1.0.${DRONE_BUILD_NUMBER}"
-#        - "latest"
-#    when:
-#      branch:
-#        - main
+    when:
+      branch:
+        - main
 
   - name: Publish Dev Image
-    image: plugins/docker
+    image: thegeeklab/drone-docker-buildx:23
+    privileged: true
     settings:
       username:
         from_secret: DOCKER_USER
@@ -45,6 +33,9 @@ steps:
       repo: hercdottech/docker-nginx-fpm-proxy
       tags:
         - "v1.0.${DRONE_BUILD_NUMBER}-dev"
+      platforms:
+        - linux/amd64
+        - linux/arm64
     when:
       branch:
         exclude:
