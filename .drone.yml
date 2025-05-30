@@ -18,7 +18,6 @@ steps:
       platforms:
         - linux/amd64
         - linux/arm64
-        - linux/arm64/v8
     when:
       branch:
         - main
@@ -37,7 +36,6 @@ steps:
       platforms:
         - linux/amd64
         - linux/arm64
-        - linux/arm64/v8
     when:
       branch:
         exclude:
