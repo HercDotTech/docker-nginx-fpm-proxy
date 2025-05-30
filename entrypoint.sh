@@ -14,7 +14,7 @@ echo "APP_PORT: ${LCL_CONTAINER_PORT}"
 echo ""
 
 # Prepare nginx.conf
-envsubst '$LCL_LISTEN_PORT,$LCL_CONTAINER_NAME,$LCL_CONTAINER_PORT,$LCL_DOCUMENT_ROOT' < /etc/nginx/nginx.template > /etc/nginx/conf.d/nginx.conf
+envsubst '$LCL_LISTEN_PORT,$LCL_CONTAINER_NAME,$LCL_CONTAINER_PORT,$LCL_DOCUMENT_ROOT' < /etc/nginx/nginx.template > /etc/nginx/conf.d/default.conf
 
 # Start nginx
 nginx -g "daemon off;"
