@@ -1,8 +1,10 @@
 define: &repo "hercdottech/docker-nginx-fpm-proxy"
+define: &callback ""
+define: &name "Docker - Nginx FPM Proxy"
 
 kind: pipeline
 type: docker
-name: Docker - Nginx FPM Proxy
+name: *name
 
 steps:
   - name: Publish Main Image
@@ -15,8 +17,8 @@ steps:
         from_secret: DOCKER_PAT
       repo: *repo
       tags:
+        - latest
         - "v1.0.${DRONE_BUILD_NUMBER}"
-        - "latest"
       platforms:
         - linux/amd64
         - linux/arm64
