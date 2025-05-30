@@ -1,0 +1,34 @@
+kind: pipeline
+type: docker
+name: Docker - Nginx FPM Proxy
+
+steps:
+  - name: Publish Main Image
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USER
+      password:
+        from_secret: DOCKER_PAT
+      repo: hercdottech/docker-nginx-fpm-proxy
+      tags:
+        - latest
+    when:
+      branch:
+        - main
+
+  - name: Publish Dev Image
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DOCKER_USER
+      password:
+        from_secret: DOCKER_PAT
+      repo: hercdottech/docker-nginx-fpm-proxy
+      tags:
+        - "${DRONE_BRANCH}"
+        - "dev-latest"
+    when:
+      branch:
+        exclude:
+          - main

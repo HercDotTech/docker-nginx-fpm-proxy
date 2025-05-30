@@ -1,0 +1,29 @@
+# /etc/nginx/conf.d/example.com.conf
+server {
+    listen  ${LCL_LISTEN_PORT};
+    root    ${LCL_DOCUMENT_ROOT};
+
+    include /etc/nginx/default.d/*.conf;
+
+    index   index.php;
+
+    client_max_body_size 30m;
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+
+        # when PHP-FPM is configured to use TCP
+        fastcgi_param HTTP_PROXY "";
+        fastcgi_pass ${LCL_CONTAINER_NAME}:${LCL_CONTAINER_PORT};
+        fastcgi_index index.php;
+
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        internal;
+    }
+
+    location ~ \.php$ {
+        return 404;
+    }
+}
