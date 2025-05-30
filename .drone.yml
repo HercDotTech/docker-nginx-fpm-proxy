@@ -4,7 +4,7 @@ name: Docker - Nginx FPM Proxy
 
 steps:
   - name: Publish Main Image
-    image: thegeeklab/drone-docker-buildx:23
+    image: thegeeklab/drone-docker-buildx:24.1.3
     privileged: true
     settings:
       username:
@@ -23,7 +23,7 @@ steps:
         - main
 
   - name: Publish Dev Image
-    image: thegeeklab/drone-docker-buildx:23
+    image: thegeeklab/drone-docker-buildx:24.1.3
     privileged: true
     settings:
       username:
