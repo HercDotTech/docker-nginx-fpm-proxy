@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no -i /data/git/.ssh/id_rsa"
 git push --mirror --quiet git@github.com:HercDotTech/docker-nginx-fpm-proxy.git &>/dev/null &
-echo "GitHub mirror initiated .."
+echo "Mirroring to GitHub .."
