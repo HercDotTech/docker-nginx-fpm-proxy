@@ -28,8 +28,6 @@ steps:
       repo: hercdottech/docker-nginx-fpm-proxy
       tags:
         - "v1.0.${DRONE_BUILD_NUMBER}-dev"
-        - "${DRONE_BRANCH}"
-        - "dev-latest"
     when:
       branch:
         exclude:
