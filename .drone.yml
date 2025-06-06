@@ -25,6 +25,7 @@ steps:
     when:
       branch:
         - main
+      event: [push, tag]
 
   - name: Publish Dev Image
     image: thegeeklab/drone-docker-buildx:24.1.3
@@ -44,3 +45,4 @@ steps:
       branch:
         exclude:
           - main
+      event: [push]
